@@ -1,0 +1,57 @@
+/* All styles */
+
+html {
+	font-family: sans-serif;
+	transition: all 1s ease-in-out;
+}
+
+.area {
+	margin: 0px auto;
+	text-align: center;
+}
+
+.disclaimer {
+	font-size: 0.1em;
+	line-height: 1;
+	text-align: center;
+}
+
+.logo {
+	width: 7em;
+	padding: 0.2em;
+	display: block;
+}
+
+
+/*Form area*/
+
+input {
+	padding-left: 0.5em;
+	margin-right: 1em;
+}
+
+.loading {
+	padding: 2em;
+	margin: 0px auto;
+	display: table;
+}
+
+.loading * {
+	display: table;
+	margin: 0px auto;
+}
+
+
+/*Results*/
+
+.council {
+	width: 90%;
+	margin: 0px auto;
+	margin-top: 1em;
+}
+
+.data {
+	border-bottom: 0.1px solid gray;
+	color: black;
+	padding-left: 0.8em;
+}
