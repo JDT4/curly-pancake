@@ -40,7 +40,7 @@
 				<div class="list">
 					<form novalidate="" class="item item-input-inset" ng-submit="findData(postcode)">
 						<label class="item-input-wrapper col col-75">
-							<input ng-pattern="/[a-zA-Z0-9^]/" type="text" name="post" ng-model="postcode" maxlength="7" style="text-transform:uppercase">
+							<input type="text" name="post" ng-model="postcode" maxlength="7" style="text-transform:uppercase">
 						</label>
 						<button type="submit" class="button button-outline button-small button-balanced col col-15">
 							GO!
@@ -56,7 +56,7 @@
 				<span class="sr-only">Loading</span>
 			</div>
 
-			<div class="council" ng-repeat="council in councils">
+			<div class="council" ng-repeat="council in councils track by $index">
 				<h3>{{council.council}} Council</h3>
 				<ul class="list">
 					<li class="data" ng-repeat="data in council.data">

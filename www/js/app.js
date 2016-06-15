@@ -23,19 +23,26 @@ angular.module('starter', ['ionic', 'apiServices'])
 		});
 	})
 	.controller('CouncilControl', ['$scope', 'apiCouncil', function ($scope, apiCouncil) {
-		$scope.$watch('postcode', function () {
-			$scope.postcode = $scope.postcode.toUpperCase().replace(/\s+/g, '');
-		});
+		//$scope.$watch('postcode', function () {
+		//$scope.postcode = $scope.postcode.toUpperCase().replace(/\s+/g, '');
+		//});
 		$scope.postcode = "SW1P3QL";
 		$scope.findData = function (code) {
 			$scope.loading = true;
-			apiCouncil.getTPDatabyPostCode(code)
-				.success(function (response) {
-					$scope.councils = response;
+			filterApp = code.toUpperCase().replace(/\s+/g, '');
+			apiCouncil.getTPDatabyPostCode(filterApp)
+				.then(function sucessCallback(response) {
+
+
+					$scope.councils = response.data;
 					$scope.loading = false;
-				})
-				.error(function (response) {
-					alert("Please try a different postcode");
+					console.log(response.data);
+
+
+
+
+				}, function errorCallback(response) {
+					console.log(response.status);
 					$scope.loading = false;
 				});
 
