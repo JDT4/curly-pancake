@@ -6,7 +6,6 @@
 						method: 'GET',
 						url: 'http://taxpayersdata.com/api/v1/' + postcode + '/true'
 					});
-					console.log(request);
 					return request;
 				};
 		}

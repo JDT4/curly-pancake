@@ -57,13 +57,15 @@
 			</div>
 
 			<div class="council" ng-repeat="council in councils track by $index">
-				<h3>{{council.council}} Council</h3>
+				<h3 ng-show="council.council">{{council.council}} Council</h3>
+				<h3 ng-show="!council.council">No council found</h3>
 				<ul class="list">
 					<li class="data" ng-repeat="data in council.data">
+						<h5>{{data.error}}</h5>
 						<a class="noLink" ng-click="showDetails = ! showDetails">
 							<h4>
 					{{data.name}}
-				<span ng-show="!showDetails" class="ion-chevron-right"></span>
+				<span ng-show="!showDetails && !data.error" class="ion-chevron-right"></span>
 				<span ng-show="showDetails" class="ion-chevron-down"></span>
 				</h4>
 						</a>
