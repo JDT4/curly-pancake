@@ -2,86 +2,87 @@
 <html>
 
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-	<title></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <title></title>
 
-	<link href="lib/ionic/css/ionic.css" rel="stylesheet">
-	<link href="css/style.css" rel="stylesheet">
+  <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
 
-	<!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+  <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
 
-	<script src="js/platformOverrides.js"></script>
+  <script src="js/platformOverrides.js"></script>
 
-	<!-- ionic/angularjs js -->
-	<script src="lib/ionic/js/ionic.bundle.js"></script>
+  <!-- ionic/angularjs js -->
+  <script src="lib/ionic/js/ionic.bundle.js"></script>
 
-	<!-- cordova script (this will be a 404 during development) -->
-	<script src="cordova.js"></script>
+  <!-- cordova script (this will be a 404 during development) -->
+  <script src="cordova.js"></script>
 
-	<!-- your app's js -->
-	<script src="js/app.js"></script>
-	<script src="js/services.js"></script>
+  <!-- your app's js -->
+  <script src="js/app.js"></script>
+  <script src="js/services.js"></script>
 </head>
 
 <body ng-app="starter">
 
-	<ion-pane ng-controller="CouncilControl">
-		<ion-header-bar class="bar-balanced">
-			<img class="logo" src="http://d3n8a8pro7vhmx.cloudfront.net/taxpayersalliance/pages/1/attachments/original/1428930383/TPA_Logo_Footer_White.png?1428930383">
-			<h1 class="title">TPA Top 10</h1>
-		</ion-header-bar>
-		<ion-content>
-			<div class="area">
-				<h4>Type in your postcode to learn how your local council spends your money</h4>
+  <ion-pane ng-controller="CouncilControl">
+    <ion-header-bar class="bar-balanced">
+      <img class="logo" src="img/TPA%20White%20Logo.png">
+      <h1 class="title">TPA Top 10</h1>
+    </ion-header-bar>
+    <ion-content>
+      <div class="area">
+        <h4>Type in your postcode to learn how your local council spends your money</h4>
 
-				<div class="list">
-					<form novalidate="" class="item item-input-inset" ng-submit="findData(postcode)">
-						<label class="item-input-wrapper col col-75">
-							<input type="text" name="post" ng-model="postcode" maxlength="7" style="text-transform:uppercase">
-						</label>
-						<button type="submit" class="button button-outline button-small button-balanced col col-15">
-							GO!
-						</button>
-					</form>
+        <div class="list">
+          <form novalidate="" class="item item-input-inset" ng-submit="findData(postcode)">
+            <label class="item-input-wrapper col col-75">
+              <input type="text" name="post" ng-model="postcode" maxlength="7" style="text-transform:uppercase">
+            </label>
+            <button type="submit" class="button button-outline button-small button-balanced col col-15">
+              GO!
+            </button>
+          </form>
 
-				</div>
-			</div>
+        </div>
+      </div>
 
-			<div class="loading" ng-show="loading">
-				<ion-spinner class="spinner-balanced"></ion-spinner>
-				<br>
-				<span class="sr-only">Loading</span>
-			</div>
+      <div class="loading" ng-show="loading">
+        <ion-spinner class="spinner-balanced"></ion-spinner>
+        <br>
+        <span class="sr-only">Loading</span>
+      </div>
 
-			<div class="council" ng-repeat="council in councils track by $index">
-				<h3 ng-show="council.council">{{council.council}} Council</h3>
-				<h3 ng-show="!council.council">No council found</h3>
-				<ul class="list">
-					<li class="data" ng-repeat="data in council.data">
-						<h5>{{data.error}}</h5>
-						<a class="noLink" ng-click="showDetails = ! showDetails">
-							<h4>
+      <div class="council" ng-repeat="council in councils track by $index">
+        <h3 ng-show="council.council">{{council.council}} Council</h3>
+        <h3 ng-show="!council.council">No council found</h3>
+        <ul class="list">
+          <li class="data" ng-repeat="data in council.data">
+            <h5>{{data.error}}</h5>
+            <a class="noLink" ng-click="showDetails = ! showDetails">
+              <h4>
 					{{data.name}}
-				<span ng-show="!showDetails && !data.error" class="ion-chevron-right"></span>
+				<span ng-show="!showDetails &amp;&amp; !data.error" class="ion-chevron-right"></span>
 				<span ng-show="showDetails" class="ion-chevron-down"></span>
 				</h4>
-						</a>
-						<div class="verbose" ng-show="showDetails">
-							<p>In its {{data.publication_date| limitTo : 4 : begin}} report <em>{{data.name}}</em>, the TaxPayers&apos; Alliance found that: </p>
-							<p>{{data.content}}</p>
-							<p><a href="{{data.URL}}">Go to the full report</a></p>
-						</div>
-					</li>
-				</ul>
-			</div>
-		</ion-content>
-		<div class="bar bar-footer bar-balanced">
-			<p class="disclaimer">TaxPayers&apos; Alliance is a trading name of The TaxPayers&apos; Alliance Limited, a company incorporated in England &amp; Wales under company registration no. 04873888 and whose registered office is at 55 Tufton Street, London, SW1P 3QL</p>
-		</div>
-	</ion-pane>
+            </a>
+            <div class="verbose" ng-show="showDetails">
+              <p>In its {{data.publication_date| limitTo : 4 : begin}} report <em>{{data.name}}</em>, the TaxPayers&apos; Alliance found that: </p>
+              <p>{{data.content}}</p>
+              <p><a href="{{data.URL}}" gotolink="">Go to the full report</a></p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </ion-content>
+    <div class="bar bar-footer bar-balanced">
+      <p class="disclaimer">TaxPayers&apos; Alliance is a trading name of The TaxPayers&apos; Alliance Limited, a company incorporated in England &amp; Wales under company registration no. 04873888 and whose registered office is at 55 Tufton Street, London, SW1P 3QL</p>
+    </div>
+  </ion-pane>
+
 </body>
 
 </html>
