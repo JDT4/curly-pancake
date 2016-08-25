@@ -7,22 +7,22 @@
         "files": {}
     },
     "installed_plugins": {
-        "cordova-plugin-device": {
-            "PACKAGE_NAME": "com.ionicframework.ionicblankapp"
-        },
         "cordova-plugin-console": {
             "PACKAGE_NAME": "com.ionicframework.ionicblankapp"
         },
-        "cordova-plugin-whitelist": {
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.ionicframework.ionicblankapp"
+        },
+        "cordova-plugin-inappbrowser": {
             "PACKAGE_NAME": "com.ionicframework.ionicblankapp"
         },
         "cordova-plugin-statusbar": {
             "PACKAGE_NAME": "com.ionicframework.ionicblankapp"
         },
-        "ionic-plugin-keyboard": {
+        "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.ionicframework.ionicblankapp"
         },
-        "cordova-plugin-inappbrowser": {
+        "ionic-plugin-keyboard": {
             "PACKAGE_NAME": "com.ionicframework.ionicblankapp"
         }
     },

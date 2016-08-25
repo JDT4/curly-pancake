@@ -6,32 +6,28 @@
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
   <title></title>
 
-  <link href="lib/ionic/css/ionic.css?ionicCachebuster=52525" rel="stylesheet">
-  <link href="css/style.css?ionicCachebuster=52525" rel="stylesheet">
+  <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
 
-  <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
-    <link href="css/ionic.app.css" rel="stylesheet">
-    -->
-
-  <script src="js/platformOverrides.js?ionicCachebuster=52525"></script>
+  <script src="js/platformOverrides.js"></script>
 
   <!-- ionic/angularjs js -->
-  <script src="lib/ionic/js/ionic.bundle.js?ionicCachebuster=52525"></script>
+  <script src="lib/ionic/js/ionic.bundle.js"></script>
 
   <!-- cordova script (this will be a 404 during development) -->
-  <script src="cordova.js?ionicCachebuster=52525"></script>
+  <script src="cordova.js"></script>
 
   <!-- your app's js -->
-  <script src="js/app.js?ionicCachebuster=52525"></script>
-  <script src="js/services.js?ionicCachebuster=52525"></script>
+  <script src="js/app.js"></script>
+  <script src="js/services.js"></script>
 </head>
 
-<body ng-app="starter" class="platform-android platform-cordova platform-webview">
+<body ng-app="starter" class="platform-android">
 
   <ion-pane ng-controller="CouncilControl">
     <ion-header-bar class="bar-balanced">
       <img class="logo" src="img/TPA%20White%20Logo.png">
-      <h1 class="title">TPA Top 10</h1>
+      <h1 class="title">YourTPA</h1>
     </ion-header-bar>
     <ion-content>
       <div class="area">
@@ -65,14 +61,14 @@
             <a class="noLink" ng-click="showDetails = ! showDetails">
               <h4>
 					{{data.name}}
-				<span ng-show="!showDetails && !data.error" class="ion-chevron-right"></span>
+				<span ng-show="!showDetails &amp;&amp; !data.error" class="ion-chevron-right"></span>
 				<span ng-show="showDetails" class="ion-chevron-down"></span>
 				</h4>
             </a>
             <div class="verbose" ng-show="showDetails">
               <p>In its {{data.publication_date| limitTo : 4 : begin}} report <em>{{data.name}}</em>, the TaxPayers&apos; Alliance found that: </p>
               <p>{{data.content}}</p>
-              <p><a href="#" onclick="window.open('{{data.URL}}','_system','location=yes')">Go to the full report</a></p>
+              <p><a href="{{data.URL}}" gotolink="">Go to the full report</a></p>
             </div>
           </li>
         </ul>
@@ -82,6 +78,7 @@
       <p class="disclaimer">TaxPayers&apos; Alliance is a trading name of The TaxPayers&apos; Alliance Limited, a company incorporated in England &amp; Wales under company registration no. 04873888 and whose registered office is at 55 Tufton Street, London, SW1P 3QL</p>
     </div>
   </ion-pane>
+
 </body>
 
 </html>
