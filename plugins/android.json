@@ -7,9 +7,6 @@
         "files": {}
     },
     "installed_plugins": {
-        "cordova-plugin-console": {
-            "PACKAGE_NAME": "com.ionicframework.ionicblankapp"
-        },
         "cordova-plugin-device": {
             "PACKAGE_NAME": "com.ionicframework.ionicblankapp"
         },
@@ -24,6 +21,9 @@
         },
         "ionic-plugin-keyboard": {
             "PACKAGE_NAME": "com.ionicframework.ionicblankapp"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.taxpayersalliance.taxpayersdata"
         }
     },
     "dependent_plugins": {}

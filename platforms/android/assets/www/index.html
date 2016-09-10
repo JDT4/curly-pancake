@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=yes, width=device-width">
   <title></title>
 
   <link href="lib/ionic/css/ionic.css" rel="stylesheet">
@@ -24,7 +24,7 @@
 
 <body ng-app="starter" class="platform-android">
 
-  <ion-pane ng-controller="CouncilControl">
+  <ion-pane ng-controller="CouncilControl" delegate-handle="mainScroll">
     <ion-header-bar class="bar-balanced">
       <img class="logo" src="img/TPA%20White%20Logo.png">
       <h1 class="title">YourTPA</h1>
@@ -32,7 +32,6 @@
     <ion-content>
       <div class="area">
         <h4>Type in your postcode to learn how your local council spends your money</h4>
-
         <div class="list">
           <form novalidate="" class="item item-input-inset" ng-submit="findData(postcode)">
             <label class="item-input-wrapper col col-75">
@@ -42,7 +41,6 @@
               GO!
             </button>
           </form>
-
         </div>
       </div>
 
@@ -51,27 +49,28 @@
         <br>
         <span class="sr-only">Loading</span>
       </div>
-
-      <div class="council" ng-repeat="council in councils track by $index">
-        <h3 ng-show="council.council">{{council.council}} Council</h3>
-        <h3 ng-show="!council.council">No council found</h3>
-        <ul class="list">
-          <li class="data" ng-repeat="data in council.data">
-            <h5>{{data.error}}</h5>
-            <a class="noLink" ng-click="showDetails = ! showDetails">
-              <h4>
+      <div class="paddingWrap">
+        <div class="council" ng-repeat="council in councils track by $index">
+          <h3 ng-show="council.council">{{council.council}} Council</h3>
+          <h3 ng-show="!council.council">No council found</h3>
+          <ul class="list">
+            <li class="data" ng-repeat="data in council.data">
+              <h5>{{data.error}}</h5>
+              <a class="noLink" ng-click="showDetails = ! showDetails; reCalculateSize()">
+                <h4>
 					{{data.name}}
 				<span ng-show="!showDetails &amp;&amp; !data.error" class="ion-chevron-right"></span>
 				<span ng-show="showDetails" class="ion-chevron-down"></span>
 				</h4>
-            </a>
-            <div class="verbose" ng-show="showDetails">
-              <p>In its {{data.publication_date| limitTo : 4 : begin}} report <em>{{data.name}}</em>, the TaxPayers&apos; Alliance found that: </p>
-              <p>{{data.content}}</p>
-              <p><a href="{{data.URL}}" gotolink="">Go to the full report</a></p>
-            </div>
-          </li>
-        </ul>
+              </a>
+              <div class="verbose" ng-show="showDetails">
+                <p>In its {{data.publication_date| limitTo : 4 : begin}} report <em>{{data.name}}</em>, the TaxPayers&apos; Alliance found that: </p>
+                <p>{{data.content}}</p>
+                <p><a ng-href="{{data.URL}}" onclick="window.open(this.href, '_system', 'location=yes'); return false;">Go to the full report</a></p>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
     </ion-content>
     <div class="bar bar-footer bar-balanced">

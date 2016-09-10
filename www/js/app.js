@@ -22,9 +22,16 @@ angular.module('starter', ['ionic', 'apiServices'])
       }
     });
   })
-  .controller('CouncilControl', ['$scope', 'apiCouncil', function ($scope, apiCouncil) {
+  .controller('CouncilControl', ['$scope', 'apiCouncil', '$ionicScrollDelegate', function ($scope, apiCouncil, $ionicScrollDelegate) {
 
     $scope.postcode = "SW1P3QL";
+    $scope.reCalculateSize = function () {
+      $ionicScrollDelegate.$getByHandle('mainScroll').resize();
+      $ionicScrollDelegate.scrollBottom();
+    };
+    /*$scope.openItem = function (item) {
+    window.open('item', '_system', 'location=yes'); return false;
+    }*/
     $scope.findData = function (code) {
       $scope.loading = true;
       filterApp = code.toUpperCase().replace(/\s+/g, '');
@@ -32,6 +39,7 @@ angular.module('starter', ['ionic', 'apiServices'])
         .then(function sucessCallback(response) {
           if (response.data[0].council) {
             $scope.councils = response.data;
+
           } else {
             $scope.councils = [{
               error: "No",
@@ -47,28 +55,4 @@ angular.module('starter', ['ionic', 'apiServices'])
           $scope.loading = false;
         });
     };
- 		}])
-  .directive('goToLink', ['$cordovaInAppBrowser', '$ionicPlatform', function ($cordovaInAppBrowser, $ionicPlatform) {
-    return {
-      restrict: 'AC',
-      link: function (scope, element, attrs) {
-        /*if (!attrs.href) {
-          return;
-        }*/
-        var externalRe = new RegExp("^(http|https)://");
-        var url = attrs.href;
-
-        if (externalRe.test(url)) {
-          element.on('click', function (e) {
-            e.preventDefault();
-            /*if (attrs.ngClick) {
-              scope.$eval(attrs.ngClick);
-            }*/
-            $ionicPlatform.ready(function () {
-              $cordovaInAppBrowser.open(url, '_system')
-            })
-          });
-        }
-      }
-    };
-}]);
+ 		}]);
